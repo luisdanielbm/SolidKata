@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="2. Open-Closed\" />
     <Folder Include="3. Liskov Substitution\" />
     <Folder Include="4. Interface Segregation\" />
     <Folder Include="5. Dependency Inversion\" />

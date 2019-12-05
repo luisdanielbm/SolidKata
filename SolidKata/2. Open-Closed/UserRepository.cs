@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace SolidKata._1.Single_Responsibility
+namespace SolidKata._2._Open_Closed
 {
-    public class UserRepository
+    class UserRepository
     {
-        private readonly  IDatabase _database;
+        private readonly IDatabase _database;
 
         public UserRepository(IDatabase database)
         {
@@ -15,12 +15,14 @@ namespace SolidKata._1.Single_Responsibility
         {
             try
             {
-                if (user.GetName() == "SOLID")
+                if (user.GetName() == "X")
                 {
-                    throw new Exception();
+                    _database.Add(user);
                 }
-
-                _database.Add(user);
+                else
+                {
+                    _database.AddAsGuest(user);
+                }
             }
             catch (Exception ex)
             {

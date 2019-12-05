@@ -1,6 +1,5 @@
-﻿using System;
-using NSubstitute;
-using NSubstitute.ExceptionExtensions;
+﻿using NSubstitute;
+using System;
 using Xunit;
 
 namespace SolidKata._1.Single_Responsibility
