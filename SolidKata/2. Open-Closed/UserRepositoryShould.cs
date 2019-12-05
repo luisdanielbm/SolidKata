@@ -8,11 +8,11 @@ namespace SolidKata._2
     public class UserRepositoryShould
     {
         [Fact]
-        public void CreateUserWhenUserNameIsX()
+        public void CreateUserWhenUserNameIsNotX()
         {
             var dataBase = Substitute.For<IDatabase>();
             var userRepository = new UserRepository(dataBase);
-            var user = new User("X");
+            var user = new User("Y");
 
             userRepository.CreateUser(user);
 
@@ -20,11 +20,11 @@ namespace SolidKata._2
         }
 
         [Fact]
-        public void CreateUserAsGuestWhenUserNameIsNotX()
+        public void CreateUserAsGuestWhenUserNameIsX()
         {
             var dataBase = Substitute.For<IDatabase>();
             var userRepository = new UserRepository(dataBase);
-            var user = new User("Y");
+            var user = new User("X");
 
             userRepository.CreateUser(user);
 

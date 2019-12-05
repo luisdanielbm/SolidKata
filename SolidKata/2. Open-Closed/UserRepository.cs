@@ -2,7 +2,7 @@
 
 namespace SolidKata._2._Open_Closed
 {
-    class UserRepository
+    public class UserRepository
     {
         private readonly IDatabase _database;
 
@@ -15,7 +15,7 @@ namespace SolidKata._2._Open_Closed
         {
             try
             {
-                if (user.GetName() == "X")
+                if (user.GetName() != "X")
                 {
                     _database.Add(user);
                 }
