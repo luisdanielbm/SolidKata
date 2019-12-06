@@ -10,39 +10,36 @@ namespace SolidKata._2
         [Fact]
         public void CreateUserWhenUserNameIsNotX()
         {
-            var dataBase = Substitute.For<IDatabase>();
-            var userRepository = new UserRepository(dataBase);
-            var user = new User("Y");
+            var userRepository = Substitute.For<IUserRepository>();
+            var user = UserFactory.CreateUser("Y", userRepository);
 
-            userRepository.CreateUser(user);
+            user.CreateUser();
 
-            dataBase.Received().Add(user);
+            userRepository.Received().Add();
         }
 
         [Fact]
         public void CreateUserAsGuestWhenUserNameIsX()
         {
-            var dataBase = Substitute.For<IDatabase>();
-            var userRepository = new UserRepository(dataBase);
-            var user = new User("X");
+            var userRepository = Substitute.For<IUserRepository>();
+            var guestUser = UserFactory.CreateUser("X", userRepository);
 
-            userRepository.CreateUser(user);
+            guestUser.CreateUser();
 
-            dataBase.Received().AddAsGuest(user);
+            userRepository.Received().AddAsGuest();
         }
 
         [Fact]
         public void ThrowExceptionWhenUserCanNotBeAdded()
         {
-            var dataBase = Substitute.For<_1.Single_Responsibility.IDatabase>();
-            var userRepository = new _1.Single_Responsibility.UserRepository(dataBase);
-            var user = new _1.Single_Responsibility.User("SOLID");
-
-            dataBase
-                .When(substituteCall: db => db.Add(user))
+            var userRepository = Substitute.For<IUserRepository>();
+            var user = UserFactory.CreateUser("SOLID", userRepository);
+            
+            userRepository
+                .When(substituteCall: db => db.Add())
                 .Do(ex => throw new Exception());
 
-            Assert.Throws<Exception>(() => userRepository.CreateUser(user));
+            Assert.Throws<Exception>(() => user.CreateUser());
         }
     }
 }
