@@ -5,7 +5,6 @@ namespace SolidKata._5.Dependency_Inversion
     public class UserRepository
     {
         private readonly IDatabase _database;
-
         private readonly Logger _logger = new Logger();
 
         public UserRepository(IDatabase database)
