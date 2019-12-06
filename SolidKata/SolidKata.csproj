@@ -26,7 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="4.Interface Segregation\" />
     <Folder Include="5.Dependency Inversion\" />
   </ItemGroup>
 
