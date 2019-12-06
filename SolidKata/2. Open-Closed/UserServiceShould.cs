@@ -5,7 +5,7 @@ using Xunit;
 
 namespace SolidKata._2
 {
-    public class UserRepositoryShould
+    public class UserServiceShould
     {
         [Fact]
         public void CreateUserWhenUserNameIsNotX()

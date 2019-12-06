@@ -7,16 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="3. Liskov Substitution\**" />
+    <Compile Remove="4. Interface Segregation\**" />
+    <Compile Remove="5. Dependency Inversion\**" />
+    <EmbeddedResource Remove="3. Liskov Substitution\**" />
+    <EmbeddedResource Remove="4. Interface Segregation\**" />
+    <EmbeddedResource Remove="5. Dependency Inversion\**" />
+    <None Remove="3. Liskov Substitution\**" />
+    <None Remove="4. Interface Segregation\**" />
+    <None Remove="5. Dependency Inversion\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
     <PackageReference Include="NSubstitute" Version="4.2.1" />
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="3. Liskov Substitution\" />
-    <Folder Include="4. Interface Segregation\" />
-    <Folder Include="5. Dependency Inversion\" />
   </ItemGroup>
 
 </Project>
