@@ -1,6 +1,6 @@
 ﻿namespace SolidKata._2._Open_Closed
 {
-    public interface IUserRepository
+    public interface IUserService
     {
         void Add();
         void AddAsGuest();

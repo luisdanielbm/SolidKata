@@ -10,32 +10,32 @@ namespace SolidKata._2
         [Fact]
         public void CreateUserWhenUserNameIsNotX()
         {
-            var userRepository = Substitute.For<IUserRepository>();
-            var user = UserFactory.CreateUser("Y", userRepository);
+            var userService = Substitute.For<IUserService>();
+            var user = UserFactory.CreateUser("Y", userService);
 
             user.CreateUser();
 
-            userRepository.Received().Add();
+            userService.Received().Add();
         }
 
         [Fact]
         public void CreateUserAsGuestWhenUserNameIsX()
         {
-            var userRepository = Substitute.For<IUserRepository>();
-            var guestUser = UserFactory.CreateUser("X", userRepository);
+            var userService = Substitute.For<IUserService>();
+            var guestUser = UserFactory.CreateUser("X", userService);
 
             guestUser.CreateUser();
 
-            userRepository.Received().AddAsGuest();
+            userService.Received().AddAsGuest();
         }
 
         [Fact]
         public void ThrowExceptionWhenUserCanNotBeAdded()
         {
-            var userRepository = Substitute.For<IUserRepository>();
-            var user = UserFactory.CreateUser("SOLID", userRepository);
+            var userService = Substitute.For<IUserService>();
+            var user = UserFactory.CreateUser("SOLID", userService);
             
-            userRepository
+            userService
                 .When(substituteCall: db => db.Add())
                 .Do(ex => throw new Exception());
 

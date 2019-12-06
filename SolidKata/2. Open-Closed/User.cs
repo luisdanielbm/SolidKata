@@ -4,13 +4,13 @@ namespace SolidKata._2._Open_Closed
 {
     public class User
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUserService _userService;
         private readonly string Name;
 
-        public User(string name, IUserRepository userRepository)
+        public User(string name, IUserService userService)
         {
             Name = name;
-            _userRepository = userRepository;
+            _userService = userService;
         }
         
         public void CreateUser()
@@ -19,11 +19,11 @@ namespace SolidKata._2._Open_Closed
             {
                 if (Name != "X")
                 {
-                    _userRepository.Add();
+                    _userService.Add();
                 }
                 else
                 {
-                    _userRepository.AddAsGuest();
+                    _userService.AddAsGuest();
                 }
             }
             catch (Exception ex)
