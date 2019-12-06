@@ -1,15 +1,16 @@
 ﻿using System;
+using SolidKata._2._Open_Closed;
 
-namespace SolidKata._2._Open_Closed
+namespace SolidKata._2
 {
     public class User
     {
         private readonly IUserService _userService;
-        private readonly string Name;
+        private readonly string _name;
 
         public User(string name, IUserService userService)
         {
-            Name = name;
+            _name = name;
             _userService = userService;
         }
         
@@ -17,7 +18,7 @@ namespace SolidKata._2._Open_Closed
         {
             try
             {
-                if (Name != "X")
+                if (_name != "X")
                 {
                     _userService.Add();
                 }
