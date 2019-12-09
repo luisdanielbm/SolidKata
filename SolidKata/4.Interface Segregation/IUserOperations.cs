@@ -1,6 +1,6 @@
 ﻿namespace SolidKata._4.Interface_Segregation
 {
-    public interface IUserCreateService
+    public interface IUserOperations
     {
         void Add();
         void AddAsGuest();

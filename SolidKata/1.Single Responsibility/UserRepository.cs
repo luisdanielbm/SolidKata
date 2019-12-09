@@ -15,7 +15,7 @@ namespace SolidKata._1.Single_Responsibility
         {
             try
             {
-                if (user.GetName() == "SOLID")
+                if (user.GetUserType() == UserTypeDirectory.Guest)
                 {
                     throw new Exception();
                 }

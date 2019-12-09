@@ -2,9 +2,9 @@
 {
     public static class UserFactory
     {
-        public static User CreateUser(string userName, IUserService userService)
+        public static User CreateUser(IUserService userService, UserTypeDirectory userType)
         {
-            return new User(userName, userService);
+            return new User(userService, userType);
         }
     }
 }

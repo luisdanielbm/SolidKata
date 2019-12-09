@@ -7,11 +7,11 @@ namespace SolidKata._1.Single_Responsibility
     public class UserRepositoryShould
     {
         [Fact]
-        public void CreateUserWhenNoErrorWasThrow()
+        public void CreateUserWhenUserIsNotAGuest()
         {
             var dataBase = Substitute.For<IDatabase>();
             var userRepository = new UserRepository(dataBase);
-            var user = new User("NoSOLID");
+            var user = new User(UserTypeDirectory.Administrator);
 
             userRepository.CreateUser(user);
 
@@ -19,11 +19,11 @@ namespace SolidKata._1.Single_Responsibility
         }
 
         [Fact]
-        public void ThrowExceptionWhenUserCanNotBeAdded()
+        public void ThrowExceptionWhenUserIsGuest()
         {
             var dataBase = Substitute.For<IDatabase>();
             var userRepository = new UserRepository(dataBase);
-            var user = new User("SOLID");
+            var user = new User(UserTypeDirectory.Guest);
 
             dataBase
                 .When(substituteCall: db => db.Add(user))

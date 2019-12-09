@@ -7,10 +7,10 @@ namespace SolidKata._3.Liskov_Substitution
     public class UserServiceShould
     {
         [Fact]
-        public void CreateUserWhenUserNameIsNotGorA()
+        public void CreateUserWhenUserIsAInternalUser()
         {
             var userService = Substitute.For<IUserService>();
-            var user = UserFactory.CreateUser("X", userService);
+            var user = UserFactory.CreateUser(UserTypeDirectory.Internal, userService);
 
             user.CreateUser();
 
@@ -18,10 +18,10 @@ namespace SolidKata._3.Liskov_Substitution
         }
 
         [Fact]
-        public void CreateUserAsGuestWhenUserNameIsG()
+        public void CreateUserAsGuestWhenUserIsAGuest()
         {
             var userService = Substitute.For<IUserService>();
-            var guestUser = UserFactory.CreateUser("G", userService);
+            var guestUser = UserFactory.CreateUser(UserTypeDirectory.Guest, userService);
 
             guestUser.CreateUser();
 
@@ -29,10 +29,10 @@ namespace SolidKata._3.Liskov_Substitution
         }
 
         [Fact]
-        public void CreateUserAsAdministratorWhenUserNameIsA()
+        public void CreateUserAsAdministratorWhenUserIsAAdministrator()
         {
             var userService = Substitute.For<IUserService>();
-            var administratorUser = UserFactory.CreateUser("A", userService);
+            var administratorUser = UserFactory.CreateUser(UserTypeDirectory.Administrator, userService);
 
             administratorUser.CreateUser();
 
@@ -43,7 +43,7 @@ namespace SolidKata._3.Liskov_Substitution
         public void ThrowExceptionWhenUserCanNotBeAdded()
         {
             var userService = Substitute.For<IUserService>();
-            var user = UserFactory.CreateUser("SOLID", userService);
+            var user = UserFactory.CreateUser(UserTypeDirectory.Unknown, userService);
 
             userService
                 .When(substituteCall: db => db.Add())

@@ -8,10 +8,10 @@ namespace SolidKata._2
     public class UserServiceShould
     {
         [Fact]
-        public void CreateUserWhenUserNameIsNotX()
+        public void CreateUserWhenUserIsNotAGuest()
         {
             var userService = Substitute.For<IUserService>();
-            var user = UserFactory.CreateUser("Y", userService);
+            var user = UserFactory.CreateUser(userService, UserTypeDirectory.Internal);
 
             user.CreateUser();
 
@@ -19,10 +19,10 @@ namespace SolidKata._2
         }
 
         [Fact]
-        public void CreateUserAsGuestWhenUserNameIsX()
+        public void CreateUserAsGuestWhenUserIsAGuest()
         {
             var userService = Substitute.For<IUserService>();
-            var guestUser = UserFactory.CreateUser("X", userService);
+            var guestUser = UserFactory.CreateUser(userService, UserTypeDirectory.Guest);
 
             guestUser.CreateUser();
 
@@ -33,7 +33,7 @@ namespace SolidKata._2
         public void ThrowExceptionWhenUserCanNotBeAdded()
         {
             var userService = Substitute.For<IUserService>();
-            var user = UserFactory.CreateUser("SOLID", userService);
+            var user = UserFactory.CreateUser(userService, UserTypeDirectory.Administrator);
             
             userService
                 .When(substituteCall: db => db.Add())

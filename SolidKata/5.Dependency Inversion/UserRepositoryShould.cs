@@ -7,12 +7,12 @@ namespace SolidKata._5.Dependency_Inversion
     public class UserRepositoryShould
     {
         [Fact]
-        public void CreateUserWhenNoErrorWasThrow()
+        public void CreateUserWhenUserIsAInternalUser()
         {
             var dataBase = Substitute.For<IDatabase>();
             var logger = Substitute.For<Logger>();
             var userRepository = new UserRepository(dataBase);
-            var user = new User("SOLID");
+            var user = new User(UserTypeDirectory.Internal);
 
             userRepository.CreateUser(user);
 
@@ -21,12 +21,12 @@ namespace SolidKata._5.Dependency_Inversion
         }
 
         [Fact]
-        public void CallLoggerWhenUserCanNotBeAdded()
+        public void WriteErrorInLogWhenUserCanNotBeAdded()
         {
             var dataBase = Substitute.For<IDatabase>();
             var logger = Substitute.For<Logger>();
             var userRepository = new UserRepository(dataBase);
-            var user = new User("SOLID");
+            var user = new User(UserTypeDirectory.Unknown);
 
             dataBase
                 .When(substituteCall: db => db.Add(user))

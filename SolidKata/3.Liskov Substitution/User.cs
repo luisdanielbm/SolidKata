@@ -5,12 +5,12 @@ namespace SolidKata._3.Liskov_Substitution
     public class User
     {
         protected readonly IUserService _userService;
-        protected readonly string _name;
+        protected readonly UserTypeDirectory _userType;
 
-        public User(string name, IUserService userService)
+        public User(IUserService userService, UserTypeDirectory userType)
         {
-            _name = name;
             _userService = userService;
+            _userType = userType;
         }
 
         public virtual void CreateUser()
@@ -28,7 +28,7 @@ namespace SolidKata._3.Liskov_Substitution
     
     public class GuestUser : User
     {
-        public GuestUser(string name, IUserService userService) : base(name, userService)
+        public GuestUser(IUserService userService, UserTypeDirectory userType) : base(userService, userType)
         {
         }
 
@@ -40,7 +40,7 @@ namespace SolidKata._3.Liskov_Substitution
 
     public class AdministratorUser : User
     {
-        public AdministratorUser(string name, IUserService userService) : base(name, userService)
+        public AdministratorUser(IUserService userService, UserTypeDirectory userType) : base(userService, userType)
         {
         }
 

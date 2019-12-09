@@ -2,16 +2,16 @@
 {
     public class User
     {
-        private string Name;
+        private readonly UserTypeDirectory _userType;
 
-        public User(string name)
+        public User(UserTypeDirectory userType)
         {
-            Name = name;
+            _userType = userType;
         }
 
-        public string GetName()
+        public UserTypeDirectory GetUserType()
         {
-            return Name;
+            return _userType;
         }
     }
 }

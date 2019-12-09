@@ -2,19 +2,19 @@
 {
     public static class UserFactory
     {
-        public static User CreateUser(string userName, IUserService userService)
+        public static User CreateUser(UserTypeDirectory userType, IUserService userService)
         {
-            if (userName == "G")
+            if (userType == UserTypeDirectory.Guest)
             {
-                return new GuestUser(userName, userService);
+                return new GuestUser(userService, userType);
             }
 
-            if (userName == "A")
+            if (userType == UserTypeDirectory.Administrator)
             {
-                return new AdministratorUser(userName, userService);
+                return new AdministratorUser(userService, userType);
             }
 
-            return new User(userName, userService);
+            return new User(userService, userType);
         }
     }
 }

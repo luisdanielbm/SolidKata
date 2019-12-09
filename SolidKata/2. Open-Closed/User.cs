@@ -6,19 +6,19 @@ namespace SolidKata._2
     public class User
     {
         private readonly IUserService _userService;
-        private readonly string _name;
+        private readonly UserTypeDirectory _userType;
 
-        public User(string name, IUserService userService)
+        public User(IUserService userService, UserTypeDirectory userType)
         {
-            _name = name;
             _userService = userService;
+            _userType = userType;
         }
         
         public void CreateUser()
         {
             try
             {
-                if (_name != "X")
+                if (_userType != UserTypeDirectory.Guest)
                 {
                     _userService.Add();
                 }
