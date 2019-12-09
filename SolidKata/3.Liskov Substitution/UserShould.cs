@@ -4,7 +4,7 @@ using Xunit;
 
 namespace SolidKata._3.Liskov_Substitution
 {
-    public class UserServiceShould
+    public class UserShould
     {
         [Fact]
         public void CreateUserWhenUserIsAInternalUser()

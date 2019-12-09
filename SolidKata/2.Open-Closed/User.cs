@@ -1,5 +1,4 @@
 ﻿using System;
-using SolidKata._2._Open_Closed;
 
 namespace SolidKata._2
 {

@@ -1,4 +1,4 @@
-﻿namespace SolidKata._2._Open_Closed
+﻿namespace SolidKata._2
 {
     public static class UserFactory
     {

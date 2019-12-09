@@ -1,11 +1,10 @@
 ﻿using System;
 using NSubstitute;
-using SolidKata._2._Open_Closed;
 using Xunit;
 
 namespace SolidKata._2
 {
-    public class UserServiceShould
+    public class UserShould
     {
         [Fact]
         public void CreateUserWhenUserIsNotAGuest()
