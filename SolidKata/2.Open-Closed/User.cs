@@ -4,8 +4,8 @@ namespace SolidKata._2
 {
     public class User
     {
-        private readonly IUserService _userService;
-        private readonly UserTypeDirectory _userType;
+        protected readonly IUserService _userService;
+        protected readonly UserTypeDirectory _userType;
 
         public User(IUserService userService, UserTypeDirectory userType)
         {
@@ -13,23 +13,28 @@ namespace SolidKata._2
             _userType = userType;
         }
         
-        public void CreateUser()
+        public virtual void CreateUser()
         {
             try
             {
-                if (_userType != UserTypeDirectory.Guest)
-                {
-                    _userService.Add();
-                }
-                else
-                {
-                    _userService.AddAsGuest();
-                }
+                _userService.Add();
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.ToString());
             }
+        }
+    }
+
+    public class GuestUser : User
+    {
+        public GuestUser(IUserService userService, UserTypeDirectory userType) : base(userService, userType)
+        {
+        }
+
+        public override void CreateUser()
+        {
+            _userService.AddAsGuest();
         }
     }
 }

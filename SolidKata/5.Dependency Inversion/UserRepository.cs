@@ -5,11 +5,12 @@ namespace SolidKata._5.Dependency_Inversion
     public class UserRepository
     {
         private readonly IDatabase _database;
-        private readonly Logger _logger = new Logger();
+        private readonly ILogger _logger;
 
-        public UserRepository(IDatabase database)
+        public UserRepository(IDatabase database, ILogger logger)
         {
             _database = database;
+            _logger = logger;
         }
 
         public void CreateUser(User user)
@@ -19,10 +20,9 @@ namespace SolidKata._5.Dependency_Inversion
                 _database.Add(user);
                 _logger.Success("");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                _logger.Error(ex.ToString());
-                throw new Exception(ex.ToString());
+                _logger.Error("");
             }
         }
     }

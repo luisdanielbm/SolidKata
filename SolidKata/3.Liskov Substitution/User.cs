@@ -44,12 +44,12 @@ namespace SolidKata._3.Liskov_Substitution
         {
         }
 
-        public void CreateAdministratorUser()
+        public override void CreateUser()
         {
             ValidateIsAdministrator();
             base.CreateUser();
         }
-        
+
         private void ValidateIsAdministrator()
         {
             // some validation here

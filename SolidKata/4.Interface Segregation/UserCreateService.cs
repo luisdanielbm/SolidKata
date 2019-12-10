@@ -1,6 +1,6 @@
 ﻿namespace SolidKata._4.Interface_Segregation
 {
-    public class UserCreateService : IUserOperations
+    public class UserCreateService : IUserCreateOperations
     {
         public void Add()
         {

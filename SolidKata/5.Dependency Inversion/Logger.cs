@@ -2,7 +2,7 @@
 
 namespace SolidKata._5.Dependency_Inversion
 {
-    public class Logger
+    public class Logger : ILogger
     {
         public void Error(string errorMessage)
         {

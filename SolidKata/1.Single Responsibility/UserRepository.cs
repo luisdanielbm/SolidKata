@@ -15,10 +15,7 @@ namespace SolidKata._1.Single_Responsibility
         {
             try
             {
-                if (user.GetUserType() == UserTypeDirectory.Guest)
-                {
-                    throw new Exception();
-                }
+                user.ValidateUserType();
 
                 _database.Add(user);
             }

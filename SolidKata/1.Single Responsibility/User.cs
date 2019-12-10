@@ -1,4 +1,6 @@
-﻿namespace SolidKata._1.Single_Responsibility
+﻿using System;
+
+namespace SolidKata._1.Single_Responsibility
 {
     public class User
     {
@@ -12,6 +14,14 @@
         public UserTypeDirectory GetUserType()
         {
             return _type;
+        }
+
+        public void ValidateUserType()
+        {
+            if (_type == UserTypeDirectory.Guest)
+            {
+                throw new Exception();
+            }
         }
     }
 }
