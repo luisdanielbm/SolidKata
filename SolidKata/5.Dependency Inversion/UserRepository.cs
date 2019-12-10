@@ -19,10 +19,9 @@ namespace SolidKata._5.Dependency_Inversion
                 _database.Add(user);
                 _logger.Success("");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                _logger.Error(ex.ToString());
-                throw new Exception(ex.ToString());
+                _logger.Error("");
             }
         }
     }

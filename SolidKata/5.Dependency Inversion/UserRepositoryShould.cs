@@ -32,7 +32,8 @@ namespace SolidKata._5.Dependency_Inversion
                 .When(substituteCall: db => db.Add(user))
                 .Do(ex => throw new Exception());
 
-            Assert.Throws<Exception>(() => userRepository.CreateUser(user));
+            userRepository.CreateUser(user);
+
             logger.Received().Error("");
         }
     }
